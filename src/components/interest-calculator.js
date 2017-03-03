@@ -1,7 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
-export function InterestCalculator(props) {
+export default function InterestCalculator(props) {
     return (
         <form className="interest-calculator"
             onSubmit={e => e.preventDefault()}>
@@ -28,11 +27,9 @@ export function InterestCalculator(props) {
     );
 }
 
-export const mapStateToProps = state => ({
-    principal: state.principal,
-    interest: state.interest,
-    years: state.years,
-    total: state.principal * Math.pow(1 + state.interest / 100, state.years)
-});
-
-export default connect(mapStateToProps)(InterestCalculator);
+InterestCalculator.defaultProps = {
+    principal: 0,
+    interest: 0,
+    years: 0,
+    total: 0
+};
